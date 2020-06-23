@@ -10,7 +10,7 @@ const {
 } = ActionTypes;
 const { FULFILLED } = AsyncSuffix;
 
-const defaultState: IState = {
+export const defaultState: IState = {
   catalogue: [],
   cart: [],
 };
