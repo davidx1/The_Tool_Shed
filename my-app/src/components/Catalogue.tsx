@@ -1,13 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addOneOf,
-  removeOneOf,
-  removeAllOf,
-  removeAll,
-  fetchData,
-} from "../actions";
+import { addOneOf } from "../actions";
 import { IState } from "../interfaces";
 
 const List = styled.ul`
@@ -33,7 +27,7 @@ const Catalogue = () => {
   return (
     <List>
       {catalogue.map(({ name, price }) => (
-        <ListItem>
+        <ListItem key={name}>
           <h1>{name}</h1>
           <p>${price.toFixed(2)}</p>
           <button onClick={() => dispatch(addOneOf(name))}>Add To Cart</button>

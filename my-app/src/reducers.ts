@@ -55,7 +55,6 @@ export const rootReducer = handleActions<IState, any>(
       return { ...state, catalogue: state.catalogue, cart: [] };
     },
     [`${FETCH_DATA}${FULFILLED}`]: (state, { payload: { data } }) => {
-      console.log(data);
       return { ...state, catalogue: data, cart: state.cart };
     },
   },

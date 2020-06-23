@@ -27,7 +27,7 @@ const Overlay = styled.div`
 `;
 
 const Modal = styled.div`
-  height: 500px;
+  height: 800px;
   width: 750px;
   margin: 48px auto;
   background-color: white;
@@ -105,7 +105,7 @@ const Cart = () => {
             <List>
               {Object.entries(cartAsObject).map(
                 ([name, { count, singlePrice, totalPrice }]) => (
-                  <ListItem>
+                  <ListItem key={name}>
                     <h2>
                       <button onClick={() => dispatch(removeOneOf(name))}>
                         -
@@ -115,8 +115,8 @@ const Cart = () => {
                         +
                       </button>
                     </h2>
-                    <p>{singlePrice}</p>
-                    <p>{totalPrice}</p>
+                    <p>${singlePrice.toFixed(2)}</p>
+                    <p>${totalPrice.toFixed(2)}</p>
                     <button onClick={() => dispatch(removeAllOf(name))}>
                       remove
                     </button>
