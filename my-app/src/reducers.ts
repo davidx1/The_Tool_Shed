@@ -1,14 +1,20 @@
 import { handleActions } from "redux-actions";
-import { IState, ActionTypes } from "./interfaces";
+import { IState, ActionTypes, AsyncSuffix } from "./interfaces";
+
+const {
+  ADD_ONE_OF,
+  REMOVE_ONE_OF,
+  REMOVE_ALL_OF,
+  REMOVE_ALL,
+  FETCH_DATA,
+} = ActionTypes;
+const { FULFILLED } = AsyncSuffix;
 
 const defaultState: IState = { catalogue: [], cart: [] };
 
-export const rootReducer = handleActions<
-  IState,
-  { type: string; name?: string }
->(
+export const rootReducer = handleActions<IState, any>(
   {
-    [ActionTypes.ADD_ONE_OF]: (state, { payload: { name = "" } }) => {
+    [ADD_ONE_OF]: (state, { payload: { name } }) => {
       if (name) {
         return {
           catalogue: state.catalogue,
@@ -18,7 +24,7 @@ export const rootReducer = handleActions<
         return state;
       }
     },
-    [ActionTypes.REMOVE_ONE_OF]: (state, { payload: { name = "" } }) => {
+    [REMOVE_ONE_OF]: (state, { payload: { name } }) => {
       if (name) {
         const index = state.cart.indexOf(name);
         return {
@@ -29,7 +35,7 @@ export const rootReducer = handleActions<
         return state;
       }
     },
-    [ActionTypes.REMOVE_ALL_OF]: (state, { payload: { name = "" } }) => {
+    [REMOVE_ALL_OF]: (state, { payload: { name } }) => {
       if (name) {
         return {
           catalogue: state.catalogue,
@@ -39,8 +45,12 @@ export const rootReducer = handleActions<
         return state;
       }
     },
-    [ActionTypes.REMOVE_ALL]: (state, _) => {
+    [REMOVE_ALL]: (state, _) => {
       return { catalogue: state.catalogue, cart: [] };
+    },
+    [`${FETCH_DATA}${FULFILLED}`]: (state, { payload: { data } }) => {
+      console.log(data);
+      return { catalogue: data, cart: state.cart };
     },
   },
   defaultState

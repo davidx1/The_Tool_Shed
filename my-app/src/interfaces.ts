@@ -13,4 +13,10 @@ export enum ActionTypes {
   REMOVE_ONE_OF = "REMOVE_ONE_OF",
   REMOVE_ALL_OF = "REMOVE_ALL_OF",
   REMOVE_ALL = "REMOVE_ALL",
+  FETCH_DATA = "FETCH_DATA",
+}
+
+export enum AsyncSuffix {
+  FULFILLED = "_FULFILLED",
+  PENDING = "_PENDiNG",
 }
