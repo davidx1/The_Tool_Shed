@@ -1,5 +1,5 @@
 import { createActions } from "redux-actions";
-import { IProduct, ActionTypes } from "./interfaces";
+import { ActionTypes } from "./interfaces";
 
 export const {
   addOneOf,

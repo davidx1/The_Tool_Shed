@@ -1,6 +1,13 @@
+import { Action } from "redux";
+
 export interface IState {
   catalogue: IProduct[];
   cart: string[];
+}
+
+export interface IAction extends Action {
+  name?: string;
+  data?: IProduct[];
 }
 
 export interface IProduct {

@@ -19,6 +19,10 @@
     {
       "name": "Hacksaw",
       "price": 18.45
+    },
+    {
+      "name": "Spoon",
+      "price": 0.2
     }
   ]
 }
